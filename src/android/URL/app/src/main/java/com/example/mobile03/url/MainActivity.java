@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
+        String  = "?";
 
         super.onCreate(savedInstanceState);
 
@@ -29,19 +30,19 @@ public class MainActivity extends Activity {
 
             public void onClick(View v) {
 
-
-
-                EditText editText = (EditText) findViewById(R.id.editText1);
-
-                EditText editText1 = (EditText) findViewById(R.id.editText2);
-
+                //URL
+                EditText editText1 = (EditText) findViewById(R.id.editText1);
+                //値
+                EditText editText2 = (EditText) findViewById(R.id.editText2);
+                //キー
+                //EditText editText3 = (EditText) findViewById(R.id.editText3);
 
 
 
                 // 入力された文字を取得
 
-                String str1 = editText.getText().toString();
-                String str2 = editText1.getText().toString();
+                String str1 = editText1.getText().toString();
+                String str2 = editText2.getText().toString();
                 String str3 = str1 + str2;
 
 
@@ -55,6 +56,7 @@ public class MainActivity extends Activity {
 
 
             }
+
 
         });
 
