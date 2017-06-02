@@ -8,9 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2" />
+        android:text="URLを入力"
+        android:layout_above="@+id/editText2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="55dp" />
     <requestFocus />
 
 
@@ -30,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:text="値を入力"
         android:inputType="textPersonName"
-        android:text="URL入力"
         android:layout_alignBottom="@+id/button1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
