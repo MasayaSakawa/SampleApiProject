@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
                 //商品名
                 EditText editText2 = (EditText) findViewById(R.id.editText2);
                 //名前
-                //EditText editText3 = (EditText) findViewById(R.id.editText3);
+                EditText editText3 = (EditText) findViewById(R.id.editText3);
 
 
 
@@ -39,16 +39,17 @@ public class MainActivity extends Activity {
 
                 String str1 = editText1.getText().toString();
                 String str2 = editText2.getText().toString();
-                String str3 = str1 + str2;
+                String str3 = editText3.getText().toString();
+                String str4 = str1 + str2 + str3;
 
-                //SQL
-                String sql = "SELECT * from name WHERE";
+                //API
+                String api = "api呼ぶ";
 
 
                 // 取得した文字をTextViewにセット！
 
 
-                Uri uri = Uri.parse(str3 + sql);
+                Uri uri = Uri.parse("?" + str4 + api);
                 Intent i = new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
 
