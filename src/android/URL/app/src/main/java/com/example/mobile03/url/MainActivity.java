@@ -13,13 +13,9 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
-        String  = "?";
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
-
 
         Button button1 = (Button) findViewById(R.id.button1);
 
@@ -32,9 +28,9 @@ public class MainActivity extends Activity {
 
                 //URL
                 EditText editText1 = (EditText) findViewById(R.id.editText1);
-                //値
+                //商品名
                 EditText editText2 = (EditText) findViewById(R.id.editText2);
-                //キー
+                //名前
                 //EditText editText3 = (EditText) findViewById(R.id.editText3);
 
 
@@ -45,12 +41,14 @@ public class MainActivity extends Activity {
                 String str2 = editText2.getText().toString();
                 String str3 = str1 + str2;
 
+                //SQL
+                String sql = "SELECT * from name WHERE";
 
 
                 // 取得した文字をTextViewにセット！
 
 
-                Uri uri = Uri.parse(str3);
+                Uri uri = Uri.parse(str3 + sql);
                 Intent i = new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
 

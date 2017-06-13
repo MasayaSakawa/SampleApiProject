@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mobile02.url.MainActivity">
+    tools:context="com.example.mobile03.url.MainActivity">
 
 
 
@@ -30,7 +30,7 @@
         android:layout_marginTop="50dp"
         android:layout_alignRight="@+id/editText2"
         android:ems="10"
-        android:text="https://www."
+        android:hint="名前入力"
         /> 
 
     <requestFocus/>
@@ -53,7 +53,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:ems="10"
-        android:hint="値入力"
+        android:hint="商品名入力"
         android:inputType="textPersonName"
         />
 
