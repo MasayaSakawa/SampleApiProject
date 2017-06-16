@@ -7,7 +7,7 @@ class Model_Product extends Model {
      */
     public static function find_all() {
         $query = DB::select ( '*' )->from ( 'product' );
-        return $query->execute ();
+        return array("products" => $query->execute ());
     }
 
     /*
@@ -16,7 +16,7 @@ class Model_Product extends Model {
     public static function find($id) {
         $query = DB::select ()->from ( 'product' );
         $query->where ( 'id', $id );
-        return $query->execute ();
+		return array("product" => $query->execute ());
     }
 
     /*
