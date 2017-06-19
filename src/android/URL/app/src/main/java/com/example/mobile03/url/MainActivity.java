@@ -1,21 +1,14 @@
 package com.example.mobile03.url;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
+public class MainActivity extends AppCompatActivity {
+    AsyncNetworkTask task;
+    AsyncNetworkTasks tasks;
 
-public class MainActivity extends Activity {
     //URL
     private EditText editText1 = null;
     //商品名
@@ -25,11 +18,10 @@ public class MainActivity extends Activity {
     //sql
     private String mode = null;
 
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
         //URL
         editText1 = (EditText) findViewById(R.id.editText1);
         //商品名
@@ -37,36 +29,42 @@ public class MainActivity extends Activity {
         //名前
         editText3 = (EditText) findViewById(R.id.editText3);
 
-        final Button button1 = (Button) findViewById(R.id.button1);
+        task = new AsyncNetworkTask(this);
+        tasks = new AsyncNetworkTasks(this);
     }
+
     public void onClick(View v) {
-        // 入力された文字を取得
         String str1 = editText1.getText().toString();
         String str2 = editText2.getText().toString();
         String str3 = editText3.getText().toString();
         String str4 = str2 + str3;
-        //押したボタンでの分岐
+
         switch(v.getId()) {
+            //検索
             case R.id.button1:
-                mode = "/SampleApi/data/productList.json";
-                // 取得した文字をTextViewにセット！
-                try {
-                    URL uri = new  URL("http://" + str1 + str4 + mode);
-                    HttpURLConnection con = (HttpURLConnection)uri.openConnection();
-                    con.setRequestMethod("GET");
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "Shift-JIS"));
-                    /*StringBuilder builder = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        builder.append(line);
-                    }
-                    TextView txtResult = (TextView) findViewById(R.id.textResult);
-                    txtResult.setText(builder.toString());*/
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.d("", "IOException" + e);
-                }
+                mode = "/find.json";
+                task.execute("?" + str1 + mode + str4);
+                break;
+            //追加
+            case R.id.button2:
+                mode = "/add.json";
+                task.execute("?" + str1 + mode + str4);
+                break;
+            //削除
+            case R.id.button3:
+                mode = "/delete.json";
+                task.execute("?" + str1 + mode + str4);
+                break;
+            //キャンセル
+            case R.id.button4:
+                task.cancel(true);
+                break;
+            //一覧
+            case R.id.button5:
+                mode = "/index.json";
+                tasks.execute("?" + str1 + mode + str4);
                 break;
         }
     }
 }
+
