@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        String str1 = editText1.getText().toString() + "id=" ;
-        String str2 = editText2.getText().toString() + "name=";
-        String str3 = editText3.getText().toString() + "price=";
+        String str1 = "id=" + editText1.getText().toString() ;
+        String str2 = "name=" + editText2.getText().toString();
+        String str3 = "price=" + editText3.getText().toString();
         String str4 = "http://morijyobi.sakura.ne.jp/SampleApi/product";
 
         switch(v.getId()) {
