@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //URL
+        //ID
         editText1 = (EditText) findViewById(R.id.editText1);
         //商品名
         editText2 = (EditText) findViewById(R.id.editText2);
@@ -34,26 +34,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        String str1 = editText1.getText().toString();
-        String str2 = editText2.getText().toString();
-        String str3 = editText3.getText().toString();
-        String str4 = str2 + str3;
+        String str1 = editText1.getText().toString() + "id=" ;
+        String str2 = editText2.getText().toString() + "name=";
+        String str3 = editText3.getText().toString() + "price=";
+        String str4 = "http://morijyobi.sakura.ne.jp/SampleApi/product";
 
         switch(v.getId()) {
             //検索
             case R.id.button1:
                 mode = "/find.json";
-                task.execute("?" + str1 + mode + str4);
+                tasks.execute(str4 + mode + "?" + str1);
                 break;
             //追加
             case R.id.button2:
                 mode = "/add.json";
-                task.execute("?" + str1 + mode + str4);
+                tasks.execute(str4 + mode + "?" + str2 + "&" + str3 );
                 break;
             //削除
             case R.id.button3:
                 mode = "/delete.json";
-                task.execute("?" + str1 + mode + str4);
+                tasks.execute(str4 + mode + "?" + str1);
                 break;
             //キャンセル
             case R.id.button4:
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             //一覧
             case R.id.button5:
                 mode = "/index.json";
-                tasks.execute("?" + str1 + mode + str4);
+                tasks.execute(str4 + mode);
                 break;
         }
     }
